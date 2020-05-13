@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import "components/Application.scss";
 import DayList from "components/DayList"
@@ -72,6 +73,7 @@ const appointments = [
 
 
 export default function Application(props) {
+  console.log(props)
   const [day, setDay] = useState("Monday");
   return (
     <main className="layout">
@@ -94,7 +96,10 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {/* Replace this with the schedule elements durint the "The Scheduler" activity. */}
+        {appointments.map(appointment => 
+          <Appointment key={appointment.id} {...appointment} />
+        )}
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
