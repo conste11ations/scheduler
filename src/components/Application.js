@@ -16,23 +16,6 @@ export default function Application(props) {
     interviewers: {}
   });
   const setDay = day => setState({ ...state, day });
-  const appointments = getAppointmentsForDay(state, state.day);
-
-  const schedule = appointments.map(appointment => {
-    const interview = getInterview(state, appointment.interview);
-    
-    console.log("interview!", interview)
-
-    return (
-      <Appointment
-        key={appointment.id}
-        id={appointment.id}
-        time={appointment.time}
-        interview={interview}
-      />
-    );
-  });
-
 
   useEffect(() => {
     Promise.all([
@@ -55,6 +38,18 @@ export default function Application(props) {
 
   }, []);
 
+  const schedule = getAppointmentsForDay(state, state.day).map(appointment => {
+
+    return (
+      <Appointment
+        key={appointment.id}
+        id={appointment.id}
+        time={appointment.time}
+        interview={getInterview(state, appointment.interview)}
+      />
+    );
+  });
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -76,9 +71,7 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {appointments.map(appointment =>
-          <Appointment key={appointment.id} {...appointment} />
-        )}
+        {schedule}
         <Appointment key="last" time="5pm" />
       </section>
     </main>
