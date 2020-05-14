@@ -7,6 +7,7 @@ import Show from "./Show.js";
 import Empty from "./Empty.js";
 
 export default function Appointment(props) {
+  console.log("hi!", props);
 
   return (
     <article className="appointment">
