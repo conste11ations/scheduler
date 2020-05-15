@@ -18,12 +18,15 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-  const save = (name, interviewer) => {
+  // chose to have id arg to explicitly inform that props.id is used
+  const save = (name, interviewer, id) => {
+
     const interview = {
       student: name,
       interviewer
     };
-    props.bookInterview(name, interview)
+    props.bookInterview(id, interview)
+    .then(transition(SHOW));
   }
 
   return (
@@ -35,7 +38,7 @@ export default function Appointment(props) {
           interviewer={props.interview.interviewer}
         />
       )}
-      {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back()} onSave={() => save} />}
+      {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back()} onSave={(name, interviewer) => save(name, interviewer, props.id)} />}
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
     </article>);
 }

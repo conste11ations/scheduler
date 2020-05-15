@@ -11,7 +11,8 @@ export default function InterviewerList(props) {
       <h4 className="interviewers__header text--light">Interviewer</h4>
       <ul className="interviewers__list">
         {props.interviewers.map(person =>
-          <InterviewerListItem
+          <InterviewerListItem 
+            key={person.id}
             id={person.id}
             name={person.name}
             avatar={person.avatar}
