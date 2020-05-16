@@ -9,6 +9,7 @@ import Empty from "./Empty.js";
 import Form from "./Form.js";
 import Status from "./Status.js";
 import Confirm from "./Confirm.js";
+import Error from "./Error.js";
 
 export default function Appointment(props) {
 
@@ -18,6 +19,8 @@ export default function Appointment(props) {
   const SAVING = "SAVING";
   const DELETING = "DELETING";
   const CONFIRM = "CONFIRM";
+  const ERROR_SAVE = "ERROR_SAVE";
+  const ERROR_DELETE = "ERROR_DELETE";
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
@@ -32,18 +35,24 @@ export default function Appointment(props) {
     };
     transition(SAVING);
     props.bookInterview(id, interview)
-      .then(() => transition(SHOW));
+      .then(() => transition(SHOW))
+      .catch(e => transition(ERROR_SAVE));
   }
 
-  const deleteInterview = (id) => {
+  const remove = (id) => {
 
     transition(DELETING);
     props.cancelInterview(id)
-      .then(() => transition(EMPTY));
+      .then(() => transition(EMPTY))
+      .catch(e => transition(ERROR_DELETE));
   }
 
   const confirm = () => {
     transition(CONFIRM);
+  }
+
+  const edit = () => {
+    transition(CREATE);
   }
 
 
@@ -55,6 +64,7 @@ export default function Appointment(props) {
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onDelete={() => confirm()}
+          onEdit={() => edit()}
         />
       }
       {mode === CREATE &&
@@ -68,11 +78,13 @@ export default function Appointment(props) {
         <Confirm
           message="Are you sure you would like to delete?"
           onCancel={() => back()}
-          onConfirm={() => deleteInterview(props.id)}
+          onConfirm={() => remove(props.id)}
         />
       }
       {mode === SAVING && <Status message="Saving, please wait..." />}
       {mode === DELETING && <Status message="Deleting, please wait..." />}
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
+      {mode === ERROR_SAVE && <Error message="Something went wrong! Error on saving."/>}
+      {mode === ERROR_DELETE && <Error message="Something went wrong! Error deleting."/>}
     </article>);
 }
