@@ -36,15 +36,15 @@ export default function Appointment(props) {
     transition(SAVING);
     props.bookInterview(id, interview)
       .then(() => transition(SHOW))
-      .catch(e => transition(ERROR_SAVE));
+      .catch(e => transition(ERROR_SAVE, true));
   }
 
   const remove = (id) => {
 
-    transition(DELETING);
+    transition(DELETING, true);
     props.cancelInterview(id)
       .then(() => transition(EMPTY))
-      .catch(e => transition(ERROR_DELETE));
+      .catch(e => transition(ERROR_DELETE, true));
   }
 
   const confirm = () => {
@@ -84,7 +84,7 @@ export default function Appointment(props) {
       {mode === SAVING && <Status message="Saving, please wait..." />}
       {mode === DELETING && <Status message="Deleting, please wait..." />}
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === ERROR_SAVE && <Error message="Something went wrong! Error on saving."/>}
-      {mode === ERROR_DELETE && <Error message="Something went wrong! Error deleting."/>}
+      {mode === ERROR_SAVE && <Error message="Something went wrong! Error on saving." onClose={() => back()} />}
+      {mode === ERROR_DELETE && <Error message="Something went wrong! Error deleting." onClose={() => back()} />}
     </article>);
 }
