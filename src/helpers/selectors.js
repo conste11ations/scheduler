@@ -29,3 +29,17 @@ export function getInterviewersForDay(state, day) {
 
   return interviewerObjects;
 }
+
+export function spotCounter (daysArr, dayName, appointmentsObj) {
+
+  const todaysKey = daysArr.findIndex(key => key.name === dayName);
+  // Design decision: ynamically count number of appointments allocated per day in case we need to change that number
+  let countingSpots = (daysArr[todaysKey].appointments).length;
+
+  (daysArr[todaysKey].appointments).forEach(appointment => appointmentsObj[appointment].interview && countingSpots--);
+
+  let withUpdatedSpots = [ ...daysArr ];
+  withUpdatedSpots[todaysKey] = {...daysArr[todaysKey], spots: countingSpots};
+
+  return withUpdatedSpots;
+}
