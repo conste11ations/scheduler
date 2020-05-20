@@ -96,6 +96,16 @@ export default {
         data: fixtures.appointments[key]
       });
     }
+  }),
+  delete: jest.fn(url => {
+    const key = url.substr(-1);
+    const route = url.substr(0, url.length - 2);
+   if (route === "/api/appointments" && key <= 4 && key >= 0) {
+      return Promise.resolve({
+        status: 200,
+        statusText: "OK"
+      });
+    }
   })
 }
 

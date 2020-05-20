@@ -35,9 +35,7 @@ export default function useApplicationData(defaultMode) {
       [id]: appointment
     };
 
-    return axios.put(
-      `/api/appointments/${id}`,
-      { interview })
+    return axios.put(`/api/appointments/${id}`, { interview })
       .then(() => setState({ ...state, days: spotCounter(state.days, state.day, appointments), appointments }));
   }
 
@@ -50,10 +48,7 @@ export default function useApplicationData(defaultMode) {
         interview: null
       }
     };
-    return axios({
-      method: 'DELETE',
-      url: `http://localhost:8001/api/appointments/${id}`,
-    })
+    return axios.delete(`/api/appointments/${id}`)
       .then(() => setState({ ...state, days: spotCounter(state.days, state.day, appointments), appointments }));
   }
 
