@@ -5,7 +5,7 @@
 Interview Scheduler is an application that allows users to book and cancel interviews. 
 
 Development focuses on a single page application (SPA) built using React.
-A Schduler-API server complements this project by providing data for the application. 
+A [Schduler-API server](https://github.com/conste11ations/scheduler-api) complements this project by providing data for the application. 
 Data is persisted by the API server using a PostgreSQL database. 
 The server also runs in error mode (npm run error) to test error-handling features.
 The client application communicates with an API server over HTTP, using the JSON format.
@@ -15,7 +15,6 @@ A variety of testing solutions were explored as part of this project, see below.
 * __Back-end: Axios, NodeJS, postgreSQL__
 * __Testing: React testing library, Storybook, Jest, Cypress__
  
-https://github.com/conste11ations/scheduler-api
 
 ## Setup
 
