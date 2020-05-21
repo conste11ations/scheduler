@@ -72,7 +72,6 @@ describe("Application", () => {
 
     expect(getByText(day, "2 spots remaining")).toBeInTheDocument();
 
-    console.log(prettyDOM(container))
   });
 
   it("loads data, edits an interview and keeps the spots remaining for Monday the same", async () => {
