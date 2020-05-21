@@ -15,8 +15,12 @@ A variety of testing solutions were explored as part of this project, see below.
 * __Back-end: Axios, NodeJS, postgreSQL__
 * __Testing: React testing library, Storybook, Jest, Cypress__
 
-![Scheduler desktop small](/docs/scheduler-desktop-small.png)
+##### Mobile view
 ![Scheduler mobile](/docs/scheduler-mobile.png)
+##### Desktop view
+![Scheduler desktop small](/docs/scheduler-desktop-small.png)
+
+##### Components
 ![Create component](/docs/create-component.png)
 ![Confirmation component](/docs/confirmation-component.png)
 ![Error component](/docs/error-component.png)
