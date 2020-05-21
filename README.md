@@ -27,7 +27,7 @@ A variety of testing solutions were explored as part of this project, see below.
 ![Confirmation component](/docs/confirmation-component.png)
 ![Error component](/docs/error-component.png)
 
-
+---
 ## Setup
 
 Install dependencies with `npm install`.
