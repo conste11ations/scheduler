@@ -41,18 +41,19 @@ npm run storybook
 
 ## Depdendencies
 
-  "dependencies": {
+
+```
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
     "normalize.css": "^8.0.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.0.0"
-  }
+```
 
 ## Dev Dependencies
 
-  "devDependencies": {
+```
     "@babel/core": "^7.4.3",
     "@storybook/addon-actions": "^5.0.10",
     "@storybook/addon-backgrounds": "^5.0.10",
@@ -66,4 +67,4 @@ npm run storybook
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.2",
     "react-test-renderer": "^16.13.1"
-  }
+```
