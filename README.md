@@ -14,7 +14,10 @@ A variety of testing solutions were explored as part of this project, see below.
 * __Front-end: React, SCSS__
 * __Back-end: Axios, NodeJS, postgreSQL__
 * __Testing: React testing library, Storybook, Jest, Cypress__
- 
+
+![Alt Text](url)
+![Alt Text](url)
+![Alt Text](url)
 
 ## Setup
 
@@ -36,6 +39,11 @@ npm test
 
 ```sh
 npm run storybook
+```
+## Running Cypress
+
+```sh
+npm run cypress
 ```
 
 ## Depdendencies
