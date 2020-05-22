@@ -21,7 +21,7 @@ const reducer = (state, action) => {
         appointments: action.appointments
       }
     case SET_INTERVIEW:
-      let appointment = {
+      const appointment = {
         ...state.appointments[action.id],
         interview: action.interview === null ? null : { ...action.interview }
       };
