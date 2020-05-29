@@ -5,6 +5,7 @@ import Button from "../Button";
 
 export default function Form(props) {
 
+  const studentName = props.interview == null ? "Enter student name" : props.interview.student
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
@@ -28,7 +29,7 @@ export default function Form(props) {
       setError("Interviewer must be selected");
       return;
     }
-  
+
     props.onSave(name, interviewer);
     setError("");
   }
@@ -44,7 +45,7 @@ export default function Form(props) {
             type="text"
             value={name}
             onChange={event => setName(event.target.value)}
-            placeholder="Enter Student Name"
+            placeholder={studentName}
           />
         </form>
         <section className="appointment__validation">{error}</section>
